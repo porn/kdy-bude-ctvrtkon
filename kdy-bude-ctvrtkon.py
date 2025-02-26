@@ -2,12 +2,11 @@
 import json
 import urllib.request
 from datetime import datetime, timedelta
-from typing import List
 
 CTVRTKON_FEED = 'https://ctvrtkon.cz/api/events/feed'
 
 
-def load_items() -> List[dict]:
+def load_items() -> list[dict]:
     try:
         with urllib.request.urlopen(CTVRTKON_FEED) as f:
             return json.loads(f.read().decode('utf-8'))['data']
@@ -16,7 +15,7 @@ def load_items() -> List[dict]:
         exit(1)
 
 
-def filter_items_older_than(items: List[dict], allowed_date: datetime) -> List[dict]:
+def filter_items_older_than(items: list[dict], allowed_date: datetime) -> list[dict]:
     for i in items:
         if i.get('started_at') is None:
             continue
