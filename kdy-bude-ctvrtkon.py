@@ -36,6 +36,7 @@ def print_item(item):
         print(f"{item['description']}\n")
         print(f"Kdy:        {item['started_at']}")
         print(f"Kde:        {item['venue']['name']}; {item['venue']['address']} ({item['venue']['website_url']})")
+        print(f"Kapacita:   {item['registration_capacity']}")
         print(f"Registrace: {item['registration_url']}")
         print(f"FB:         {item['facebook_url']}")
         print()
