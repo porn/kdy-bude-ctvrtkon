@@ -28,6 +28,10 @@ def filter_items_older_than(items: list[dict], allowed_date: datetime) -> list[d
 
 def print_item(item):
     try:
+        capacity = f"{item['attendees_count']} / {item['registration_capacity']}"
+        if waiting := item['waitlist_count']:
+            capacity += f" ({waiting} on waitlist"
+
         print('╔═' + '═' * len(item['name']) + '═╗')
         print(f"║ {item['name']} ║")
         print('╚═' + '═' * len(item['name']) + '═╝')
@@ -36,7 +40,7 @@ def print_item(item):
         print(f"{item['description']}\n")
         print(f"Kdy:        {item['started_at']}")
         print(f"Kde:        {item['venue']['name']}; {item['venue']['address']} ({item['venue']['website_url']})")
-        print(f"Kapacita:   {item['registration_capacity']}")
+        print(f"Kapacita:   {capacity}")
         print(f"Registrace: {item['registration_url']}")
         print(f"FB:         {item['facebook_url']}")
         print()
